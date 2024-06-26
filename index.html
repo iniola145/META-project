@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Video Control</title>
+  <style>
+    .video-container {
+    position: relative;
+    width: 600px;
+}
+
+#video {
+    width: 100%;
+    height: auto;
+}
+
+.playPauseButton {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.playPauseButton img {
+    width: 40px;
+    height: 40px;
+}
+
+  </style>
+</head>
+<body>
+    <div class="video-container">
+        <video id="video" width="600">
+            <source src="./Home Images/videos/An8pXo_QGzvzk_gLESqk9L5N-NzVgw2VUrO_av2daW29WZ3_J_HjMBEvwEeB9EoPTTk5Vmbwwj9GSpo5UKBHQl-k.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <button id="playPauseButton" class="playPauseButton">
+            <img id="playPauseIcon" src="play-icon.png" alt="Play">
+        </button>
+    </div>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const video = document.getElementById('video');
+    const playPauseButton = document.getElementById('playPauseButton');
+    const playPauseIcon = document.getElementById('playPauseIcon');
+
+    playPauseButton.addEventListener('click', function() {
+        if (video.paused) {
+            video.play();
+            playPauseIcon.src = 'pause-icon.png';
+        } else {
+            video.pause();
+            playPauseIcon.src = 'play-icon.png';
+        }
+    });
+
+    video.addEventListener('play', function() {
+        playPauseIcon.src = 'pause-icon.png';
+    });
+
+    video.addEventListener('pause', function() {
+        playPauseIcon.src = 'play-icon.png';
+    });
+});
+
+  </script>
+</body>
+</html>
